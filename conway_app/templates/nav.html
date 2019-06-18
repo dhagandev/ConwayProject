@@ -5,9 +5,14 @@
                 <li><a href="/" class="left brand-logo">Nav Bar</a></li>
             </ul>
             <ul class="right">
-                <li>Nav item</li>
-                <li>Nav item</li>
-                <li>Nav item</li>
+                {% if user.is_authenticated %}
+                    <li>Nav item</li>
+                    <li>Nav item</li>
+                    <li>Nav item</li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
