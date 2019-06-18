@@ -8,9 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Title Stuff</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 </head>
 <body>
-    
+    <div class="top-header">
+        <div class="game-header">Conway's Game of Survival</div>
+        <div class="header-btn-area">buttons</div>
+    </div>
     {% block content %}
     {% endblock %}
     

@@ -1,0 +1,18 @@
+html, body {
+	background: #E5E5E5;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.top-header {
+	position: absolute;
+	width: 100%;
+	background: #1D1832;
+	color: #F8F5FD;
+}
+
+.game-header {
+	font-size: 20px;
+	line-height: 30px;
+}
