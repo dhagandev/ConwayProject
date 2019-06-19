@@ -1,0 +1,31 @@
+.navbar {
+	clear: both;
+	width: 100%;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.25);
+	display: flex;
+}
+
+.nav-item {
+	width: 100px;
+	font-family: Sawarabi Mincho;
+	font-size: 18px;
+	padding: 20px 8.6%;
+	color: #1D1832;
+}
+
+.nav-item a:visited {
+	color: #1D1832;
+}
+
+.nav-end {
+	margin: 0 auto;
+}
+
+.nav-right {
+	margin-left: 0;
+}
+
+.nav-left {
+	margin-right: 0;
+}
