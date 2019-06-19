@@ -20,7 +20,11 @@
         <div class="game-header">Conway's Game of Survival</div>
         <div class="header-btn-area">
             <div class="hov-rules">Rules</div>
-            <a href=""><div class="purple-btn auth-btn">Sign Up</div></a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}"><div class="purple-btn auth-btn">Logout</div></a>
+            {% else %}
+                <a href="{% url 'login' %}"><div class="purple-btn auth-btn">Login</div></a>
+            {% endif %}
         </div>
     </div>
     {% block content %}
