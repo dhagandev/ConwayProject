@@ -1,0 +1,94 @@
+.banner-area {
+	width: 100%;
+	height: 252px;
+
+	background: #D8D8D8;
+	border: 1px solid #979797;
+	box-sizing: border-box;
+}
+
+.banner-btn {
+	width: 152px;
+	padding: 8px 12px;
+	margin: 160px auto 0;
+}
+
+.gallery-container {
+	margin: 0 auto;
+	width: 1320px;
+}
+
+.sorting {
+	font-family: Open Sans;
+	font-size: 18px;
+
+	color: #000000;
+	line-height: 24px;
+
+	width: 320px;
+	margin: 52px auto 40px;
+
+	display: flex;
+}
+
+.sorting a:visited {
+	color: #000000;
+}
+
+.sort-cat {
+	font-weight: bold;
+}
+
+.config-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.config-item {
+	width: 380px;
+	height: 300px;
+
+	background: #D8D8D8;
+	border: 1px solid #979797;
+	border-radius: 6px;
+	box-sizing: border-box;
+
+	margin: 0 60px 60px 0;
+	display: inline-block;
+	vertical-align: bottom;
+	position: relative;
+}
+
+.config-item:hover {
+	opacity: 0.3;
+	box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.25);
+}
+
+/*Config-user and config-title have an opacity issue on hover, debugging necessary*/
+.config-user, .config-title {
+	position: absolute;
+
+	font-family: Sawarabi Mincho;
+	font-size: 20px;
+	color: #1D1832;
+}
+
+.config-user {
+	right: 20px;
+	top: 20px;
+}
+
+.config-title {
+	left: 20px;
+	bottom: 20px;
+}
+
+.config-data-wrap {
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.config-data-wrap:hover {
+	opacity: 1;
+}

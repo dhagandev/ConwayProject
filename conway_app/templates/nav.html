@@ -1,19 +1,5 @@
-<header class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <ul>
-                <li><a href="/" class="left brand-logo">Nav Bar</a></li>
-            </ul>
-            <ul class="right">
-                {% if user.is_authenticated %}
-                    <li>Nav item</li>
-                    <li>Nav item</li>
-                    <li>Nav item</li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
-</header>
+<nav class="navbar">
+    <div class="nav-item nav-end nav-left active-tab"><a href="{% url 'home' %}">Gallery</a></div>
+    <div class="nav-item"><a href="{% url 'create' %}">New Game</a></div>
+    <div class="nav-item nav-end nav-right"><a href="{% url 'rules' %}">Learn</a></div>
+</nav>
