@@ -31,6 +31,10 @@ a {
 	margin: 20px 0 20px 88px;
 }
 
+.top-header a:visited {
+	color: #F8F5FD;
+}
+
 .header-btn-area {
 	height: 100%;
 	float: right;

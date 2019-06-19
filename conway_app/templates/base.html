@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="top-header">
-        <div class="game-header">Conway's Game of Survival</div>
+        <div class="game-header"><a href="{% url 'home' %}">Conway's Game of Survival</a></div>
         <div class="header-btn-area">
             <div class="hov-rules">Rules</div>
             {% if user.is_authenticated %}

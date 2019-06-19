@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="banner-area">
-	<a href=""><div class="purple-btn banner-btn">Learn the Game</div></a>
+	<a href="{% url 'rules' %}"><div class="purple-btn banner-btn">Learn the Game</div></a>
 </div>
 
 {% include 'nav.html' %}
@@ -12,28 +12,22 @@
 		<div class="sort-cat active-tab"><a href="">Latest Configurations</a></div> | <div class="sort-cat"><a href="">Most Popular</a></div>
 	</div>
 	<div class="config-container">
-		<a href="">
-			<div class="config-item">
-				<div class="config-data-wrap">
-					<div class="config-user">
-						Config creator
+		{% with ''|center:12 as range %}
+			{% for _ in range %}
+				<a href="">
+					<div class="config-item">
+						<div class="config-data-wrap">
+							<div class="config-user">
+								Config creator
+							</div>
+							<div class="config-title">
+								Config title name
+							</div>
+						</div>
 					</div>
-					<div class="config-title">
-						Config title name
-					</div>
-				</div>
-			</div>
-		</a>
-		<div class="config-item">
-		</div>
-		<div class="config-item">
-		</div>
-		<div class="config-item">
-		</div>
-		<div class="config-item">
-		</div>
-		<div class="config-item">
-		</div>
+				</a>
+			{% endfor %}
+		{% endwith %}
 	</div>
 </div>
 
