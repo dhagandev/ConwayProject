@@ -17,34 +17,47 @@ h3 {
 }
 
 input {
+    margin: 10px;
     height: 30px;
     width: 425px;
     border-radius: 6px;
 }
 
 .btn {
-
-   background-color: #572795;
-   color: white;
-   font-family: Open Sans;
-   font-style: normal;
-   font-weight: bold;
-   font-size: 14px;
-   line-height: 19px;
-   text-align: center;
-   height: 38px;
-   width: 430px;
-   padding: 5px;
-   border-radius: 6px;
-   margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    background-color: #572795;
+    color: white;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    height: 38px;
+    width: 430px;
+    border-radius: 6px;
+    
 }
 
 p {
-    
+    display: flex;  
+    flex-direction: row;
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
     color: #000000;   
+}
+
+.helptext {
+    visibility: hidden;
+    display: none !important;
+}
+
+label {
+    text-align: center;
+    padding: 10px;
 }
