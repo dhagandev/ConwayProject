@@ -2,4 +2,30 @@
 {% block content %}
 {% include 'nav.html' %}
 
+
+<div class="sim-zone">
+	<div class="game-zone">
+		<div class="board">
+		</div>
+		<div class="board-bar">
+			<a href=""><div class="white-btn next-btn">Next</div></a>
+			<a href=""><div class="white-btn start-btn">Start</div></a>
+		</div>
+	</div>
+	<div class="info-zone">
+		<div class="etc-zone">
+			<div class="display-title">Title of Configuration Here</div>
+			<div class="display-owner">Creator</div>
+		</div>
+		<div class="rules-zone">
+			<div class="rules-label">Rules:</div>
+			<div class="rules-descrip">
+			<p>1. Each alive cell with one or no neighbors dies, as if by solitude. </p>
+			<p>2. Each alive cell with four or more neighbors dies, as if by overpopulation.</p> 
+			<p>3. Each alive cell with two or three neighbors survives.</p> 
+			<p>4. Each empty cell with three neighbors becomes populated.</p> </div>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
