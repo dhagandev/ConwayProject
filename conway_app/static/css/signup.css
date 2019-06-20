@@ -1,0 +1,50 @@
+header {
+    height: 300px;
+    background-color: #FDCBF5;
+}
+
+h3 {
+    
+    align-items: left;
+    padding-top: 100px;
+    padding-left: 20px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.292234px;
+}
+
+input {
+    
+    height: 30px;
+    width: 425px;
+    border-radius: 6px;
+}
+
+.btn {
+
+   background-color: #572795;
+   color: white;
+   font-family: Open Sans;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 14px;
+   line-height: 19px;
+   height: 38px;
+   width: 430px;
+   padding: 5px;
+   border-radius: 6px;
+   margin-left: 70px;
+}
+
+p {
+    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #000000;   
+}

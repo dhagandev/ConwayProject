@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Log In</h1>
+<header>
+<h3>Survive the Darkness:<br>
+Play Conway's Game and <br>
+share your results</h3>
+</header>
 <form method="post" action="{% url 'login' %}">
 	{% csrf_token %}
 	{{ form.as_p }}
 	<input type="submit" class="btn" value="login">
 	<input type="hidden" name="next" value="{{ next }}">
 </form>
-<a href="{% url 'signup' %}">sign up</a>
+<p>Not a member? <a href="{% url 'signup' %}">Sign up</a></p>
 {% endblock %}
