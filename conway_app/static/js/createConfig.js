@@ -1,8 +1,20 @@
-function createGameZone() {
+const BOARD_LEN = 940;
+const BOARD_WID = 1265;
+let GRID = [];
+
+
+function cellClicked(cell) {
+	let r = cell.getAttribute("row");
+	let c = cell.getAttribute("col");
+
+	GRID[r][c] = !GRID[r][c]
+}
+
+function createGameZone(gridLen, gridWid) {
 	let gameZone = document.createElement("div");
 	gameZone.classList.add("game-zone");
 
-	let board = createBoard();
+	let board = createBoard(gridLen, gridWid);
 
 	let boardBar = createBoardBar();
 
@@ -12,12 +24,34 @@ function createGameZone() {
 	return gameZone;
 }
 
-function createBoard() {
+function createBoard(gridLen, gridWid) {
 	let board = document.createElement("div");
 	board.classList.add("board");
 
+	for (let numRow = 0; numRow < gridLen; numRow++) {
+		let newRow = [];
+		for (let ele = 0; ele < gridWid; ele++) {
+			newRow.push(false);
+
+			let square = document.createElement("div");
+			square.classList.add("cell");
+			square.setAttribute("row", numRow);
+			square.setAttribute("col", ele);
+			square.addEventListener('click', function() {
+				cellClicked(this);
+			});
+
+			board.append(square);
+		}
+		GRID.push(newRow);
+	}
+
+	console.log(GRID)
+
 	return board;
 }
+
+
 
 function createBoardBar() {
 	let boardBar = document.createElement("div");
@@ -129,14 +163,14 @@ function createInfoZone() {
 	return infoZone;
 }
 
-function createSimZone() {
+function createSimZone(gridLen, gridWid) {
 	let simSetup = document.querySelector(".sim-setup");
 	let simZoneParent = simSetup.parentNode;
 
 	let simZone = document.createElement("div");
 	simZone.classList.add("sim-zone")
 
-	let gameZone = createGameZone();
+	let gameZone = createGameZone(gridLen, gridWid);
 	let infoZone = createInfoZone();
 
 	simZone.appendChild(gameZone);
@@ -161,6 +195,7 @@ function validInput(value) {
 }
 
 function createConfig() {
+	GRID = [];
 	let gridLen = document.querySelector("#grid-len").value;
 	let gridWid = document.querySelector("#grid-wid").value;
 	
@@ -177,11 +212,11 @@ function createConfig() {
 		}
 
 		if (simZone === null) {
-			createSimZone();
+			createSimZone(gridLen, gridWid);
 		}
 		else {
 			simZone.parentNode.removeChild(simZone);
-			createSimZone();
+			createSimZone(gridLen, gridWid);
 		}
 	}
 	else {
