@@ -2,4 +2,26 @@
 {% block content %}
 {% include 'nav.html' %}
 
+<div class="user-prof">
+	<div class="user-card">
+		<div class="user-icon"/>
+		<div class="user-name">1stAnd LastName</div>
+	</div>
+	<div class="user-work">
+		{% with ''|center:12 as range %}
+			{% for _ in range %}
+				<a href="">
+					<div class="config-item">
+						<div class="config-data-wrap">
+							<div class="config-title">
+								Config title name
+							</div>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+		{% endwith %}
+	</div>
+</div>
+
 {% endblock %}
