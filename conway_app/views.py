@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .models import User
 
 # Create your views here.
 def home(request):
@@ -15,9 +16,9 @@ def consim_create(request):
 def consim_detail(request):
 	return render(request, 'consim/viewconsim.html')
 
-def user_profile(request):
+def user_profile(request, user_id):
 	user = User.objects.get(id=user_id)
-	return render(request, 'users/profile.html', {'user': user})
+	return render(request, 'registration/profile.html', {'user': user})
 
 def signup(request):
 	error_message = ''
