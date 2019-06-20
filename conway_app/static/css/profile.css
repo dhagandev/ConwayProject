@@ -1,0 +1,47 @@
+.user-prof {
+	height: 100%;
+	width: 80%;
+	margin: 30px auto;
+	display: flex;
+}
+
+.user-card {
+	height: 180px;
+	width: 180px;
+	background: #F8F5FD;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	margin-right: 28px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-icon {
+	border-radius: 50%;
+	width: 82px;
+	height: 82px;
+	margin: 6px;
+}
+
+.user-name {
+	font-family: Open Sans;
+	font-size: 14px;
+	line-height: 19px;
+
+	color: #000000;
+	margin: 6px;
+}
+
+.user-work {
+	width: 85%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.user-work .config-item {
+	height: 180px;
+	width: 235px;
+	margin: 0 9px 18px;
+}
