@@ -1,13 +1,82 @@
 const BOARD_LEN = 940;
 const BOARD_WID = 1265;
 let GRID = [];
+let DOM_GRID = [];
+let DIR_ARR = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+	
+function livingNeighborUpdate(cell) {
+	let r = cell.getAttribute("row");
+	let c = cell.getAttribute("col");
 
+	DIR_ARR.forEach(ele => {
+		let nri = parseInt(r) + ele[0];
+		let nci = parseInt(c) + ele[1];
+		if (isValidPosition(nri, nci)) {
+			let domNeighbor = DOM_GRID[nri][nci];
+			if (hasLivingNeighbor(DOM_GRID[nri][nci])) {
+				if (!domNeighbor.classList.contains("alive")) {
+					domNeighbor.classList.add("adjacent");
+				}
+			}
+			else {
+				domNeighbor.classList.remove("adjacent")
+			}
+		}
+	})
+
+	return false;
+}
+
+function hasLivingNeighbor(cell) {
+	let r = cell.getAttribute("row");
+	let c = cell.getAttribute("col");
+
+	let hasLivingNeighbor = false;
+	DIR_ARR.forEach(ele => {
+		let nri = parseInt(r) + ele[0];
+		let nci = parseInt(c) + ele[1];
+		if (isValidPosition(nri, nci)) {
+			if (GRID[nri][nci]) {
+				hasLivingNeighbor = true;
+			}
+		}
+	})
+	return hasLivingNeighbor;
+}
+
+function isValidPosition(row, col) {
+	if (row < 0 || col < 0) {
+		return false;
+	}
+
+	if (row >= GRID.length || col >= GRID[0].length) {
+		return false;
+	}
+	return true;
+}
 
 function cellClicked(cell) {
 	let r = cell.getAttribute("row");
 	let c = cell.getAttribute("col");
 
-	GRID[r][c] = !GRID[r][c]
+	GRID[r][c] = !GRID[r][c];
+
+	if (GRID[r][c]) {
+		cell.classList.add("alive");
+		cell.classList.remove("adjacent");
+	}
+	else {
+		cell.classList.remove("alive")
+		if (hasLivingNeighbor(cell)) {
+			cell.classList.add("adjacent")
+		}
+	}
+	
+	livingNeighborUpdate(cell);
+}
+
+function createCell(gridLen, gridWid) {
+
 }
 
 function createGameZone(gridLen, gridWid) {
@@ -24,34 +93,48 @@ function createGameZone(gridLen, gridWid) {
 	return gameZone;
 }
 
+function createCell(numRow, ele, gridLen, gridWid) {
+	let square = document.createElement("div");
+	square.classList.add("cell");
+	square.setAttribute("row", numRow);
+	square.setAttribute("col", ele);
+	square.addEventListener('click', function() {
+		cellClicked(this);
+	});
+
+	squareHeight = Math.trunc(BOARD_LEN/gridLen);
+	squareHeight = Math.trunc(squareHeight/BOARD_LEN * 100);
+	square.style.height = squareHeight + "%";
+
+	squareWidth = Math.trunc(BOARD_WID/gridWid);
+	squareWidth = Math.trunc(squareWidth/BOARD_WID * 100);
+	square.style.width = squareWidth + "%";
+
+	return square;
+}
+
 function createBoard(gridLen, gridWid) {
 	let board = document.createElement("div");
 	board.classList.add("board");
 
 	for (let numRow = 0; numRow < gridLen; numRow++) {
 		let newRow = [];
+		let domRow = []
 		for (let ele = 0; ele < gridWid; ele++) {
 			newRow.push(false);
-
-			let square = document.createElement("div");
-			square.classList.add("cell");
-			square.setAttribute("row", numRow);
-			square.setAttribute("col", ele);
-			square.addEventListener('click', function() {
-				cellClicked(this);
-			});
-
+			let square = createCell(numRow, ele, gridLen, gridWid);
+			domRow.push(square);
 			board.append(square);
 		}
 		GRID.push(newRow);
+		DOM_GRID.push(domRow);
 	}
 
 	console.log(GRID)
+	console.log(DOM_GRID)
 
 	return board;
 }
-
-
 
 function createBoardBar() {
 	let boardBar = document.createElement("div");
@@ -182,13 +265,13 @@ function createInputError() {
 	let setupZone = document.querySelector(".setup-input");
 	let errZone = document.createElement("div");
 	errZone.classList.add("err-zone");
-	errZone.innerHTML = "Something went wrong! Your inputs must be between 3 and 50. Try again.";
+	errZone.innerHTML = "Something went wrong! Your inputs must be between 3 and 30. Try again.";
 
 	setupZone.appendChild(errZone);
 }
 
 function validInput(value) {
-	if (isNaN(value) || value < 3 || value > 50) {
+	if (isNaN(value) || value < 3 || value > 30) {
 		return false;
 	}
 	return true;
@@ -196,6 +279,7 @@ function validInput(value) {
 
 function createConfig() {
 	GRID = [];
+	DOM_GRID = [];
 	let gridLen = document.querySelector("#grid-len").value;
 	let gridWid = document.querySelector("#grid-wid").value;
 	

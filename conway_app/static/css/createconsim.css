@@ -73,10 +73,27 @@
 	margin: 44px auto 0;
 }
 
+.cell {
+	margin: 2px;
+	background: #000000;
+}
+
+.alive {
+	background: #FFFFFF;
+}
+
+.adjacent {
+	background: red;
+}
+
 .board {
+	margin: auto
 	background: #C4C4C4;
 	height: 940px;
 	border-radius: 22px 22px 0 0;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .board-bar {
