@@ -15,6 +15,10 @@
 	margin: 0 auto 10px;
 }
 
+.title-label {
+	margin-bottom: 20px;
+}
+
 .setup-descrip {
 	font-family: Open Sans;
 	font-size: 18px;
@@ -119,6 +123,16 @@
 	display: inline-block;
 	padding: 8px 40px;
 	margin-left: 150px; 
+}
+
+.err-zone {
+	color: #F49A9A;
+	margin-top: 16px;
+	
+	font-family: Open Sans;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
 }
 
 .info-zone {
