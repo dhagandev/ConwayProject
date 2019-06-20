@@ -1,5 +1,7 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
+import datetime
 
 # Create your models here.
 class User(models.Model):
@@ -10,3 +12,15 @@ class User(models.Model):
 
     def __str__(self):
         return self.name
+
+class ConwayConfig(models.Model):
+    title = models.CharField(max_length=200)
+    board = ArrayField(ArrayField(models.BooleanField()))
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateField('created', default=datetime.datetime.now())
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-created']
