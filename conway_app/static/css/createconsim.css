@@ -74,7 +74,11 @@
 }
 
 .cell {
-	background: #000000;
+	background-color: #000000;
+	background-image: url('../img/whitesmoke2.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 90% 95%;
 }
 
 .alive {
@@ -88,7 +92,10 @@
 }
 
 .adjacent {
-	background: red;
+	background-color: #000000;
+	background-image: url('../img/whitesmoke.png');
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .board {
@@ -119,6 +126,7 @@
 	margin-top: 20px;
 	padding: 12px 0;
 	width: 134px;
+	height: 24px;
 
 	border-radius: 25px;
 	text-align: center;
@@ -144,7 +152,7 @@
 .apply-btn {
 	display: inline-block;
 	padding: 8px 40px;
-	margin-left: 32px; 
+	margin-left: 16px; 
 }
 
 .err-zone {
@@ -196,8 +204,14 @@
 }
 
 .sprite-choice {
+	display: inline-flex;
+	width: 200px;
 	text-align: center;
-	margin: 16px 52px;
+	font-size: 14px;
+}
+
+.sprite-choice input[type="radio"] {
+	margin-top: -7px;
 }
 
 .need-to-login {

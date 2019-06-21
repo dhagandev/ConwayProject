@@ -9,5 +9,5 @@ urlpatterns = [
     path('sim/<int:consim_id>/', views.consim_detail, name='detail'),
     path('users/<int:user_id>/', views.user_profile, name='profile'),
 
-    path('/sim/save', views.save_config)
+    path('sim/save/', views.save_config)
 ]

@@ -145,28 +145,30 @@ function createBoardBar() {
 	let boardBar = document.createElement("div");
 	boardBar.classList.add("board-bar");
 
-	let nextBtnLink = document.createElement("a");
-	nextBtnLink.setAttribute("href", "");
+	// let nextBtnLink = document.createElement("a");
+	// nextBtnLink.setAttribute("href", "");
 
 	let nextBtn = document.createElement("div");
 	nextBtn.classList.add("white-btn");
 	nextBtn.classList.add("next-btn");
 	nextBtn.innerHTML = "Next";
 
-	nextBtnLink.appendChild(nextBtn);
+	// nextBtnLink.appendChild(nextBtn);
 
-	let startBtnLink = document.createElement("a");
-	startBtnLink.setAttribute("href", "");
+	// let startBtnLink = document.createElement("a");
+	// startBtnLink.setAttribute("href", "");
 
 	let startBtn = document.createElement("div");
 	startBtn.classList.add("white-btn");
 	startBtn.classList.add("start-btn");
 	startBtn.innerHTML = "Start";
 
-	startBtnLink.appendChild(startBtn);
+	// startBtnLink.appendChild(startBtn);
 
-	boardBar.appendChild(nextBtnLink);
-	boardBar.appendChild(startBtnLink);
+	boardBar.appendChild(nextBtn);
+	boardBar.appendChild(startBtn);
+	// boardBar.appendChild(nextBtnLink);
+	// boardBar.appendChild(startBtnLink);
 
 	return boardBar;
 }
@@ -188,18 +190,19 @@ function createEtcZone() {
 	titleInput.setAttribute("name", "title-input");
 	titleInput.setAttribute("maxlength", "200");
 
-	let saveLink = document.createElement("a");
-	saveLink.setAttribute("href", "");
+	// let saveLink = document.createElement("a");
+	// saveLink.setAttribute("href", "");
 
 	let saveBtn = document.createElement("div");
 	saveBtn.classList.add("purple-btn");
 	saveBtn.classList.add("save-btn");
 	saveBtn.innerHTML = "Save";
 
-	saveLink.appendChild(saveBtn);
+	// saveLink.appendChild(saveBtn);
 	form.appendChild(titleLabel);
 	form.appendChild(titleInput);
-	form.appendChild(saveLink);
+	// form.appendChild(saveLink);
+	form.appendChild(saveBtn)
 	etcZone.appendChild(form);
 
 	return etcZone;
@@ -265,7 +268,7 @@ function createSimZone(gridLen) {
 	simZone.appendChild(infoZone);
 	simZoneParent.appendChild(simZone);
 
-	//setupSave();
+	setupSave();
 }
 
 function createInputError() {
@@ -288,14 +291,10 @@ function createConfig() {
 	GRID = [];
 	DOM_GRID = [];
 	CONNIE = false;
-
-	console.log(user.id)
-
 	let gridLen = document.querySelector("#grid-len").value;
 	
 	gridLen = parseInt(gridLen);
 	let lenOk = validInput(gridLen);
-
 
 	let simZone = document.querySelector(".sim-zone");
 	let errZone = document.querySelector(".err-zone");
@@ -342,19 +341,37 @@ function saveConfig() {
 
 }
 
+function gridToStr() {
+	let grid_str = ""
+	grid_str += GRID.length + " " + GRID[0].length + " "
+	GRID.forEach(row => {
+		row.forEach(ele => {
+			grid_str += ele;
+		})
+	})
+
+	console.log(grid_str)
+
+	return grid_str
+}
+
 function setupSave() {
 	// let saveBtn = document.querySelector(".save-btn");
 	// saveBtn.addEventListener("click", saveConfig);
-	let titleInput = document.querySelector("#title-input").value;
+	
+	console.log("PREPPING SAVE")
+
 
 	$(".save-btn").click(function() {
+		let titleInput = document.querySelector("#title-input").value;
+		// let grid_str = gridToStr();
 		$.ajax({
 			url: '/sim/save/',
 			data: {
-				'title': titleInput,
-				'board': GRID,
-				'conway': !CONNIE,
-				'owner': user
+				title: titleInput,
+				board: GRID,
+				conway: !CONNIE,
+				owner: user
 			},
 			type: 'POST',
 			success: function() {
