@@ -8,4 +8,6 @@ urlpatterns = [
     path('sim/create/', views.consim_create, name='create'),
     path('sim/<int:consim_id>/', views.consim_detail, name='detail'),
     path('users/<int:user_id>/', views.user_profile, name='profile'),
+
+    path('/sim/save', views.save_config)
 ]

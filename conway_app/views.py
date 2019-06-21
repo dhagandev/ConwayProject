@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import User, ConwayConfig
+from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
@@ -33,3 +35,13 @@ def signup(request):
 	form = UserCreationForm()
 	context = {'form': form, 'error_message': error_message}
 	return render(request, 'registration/signup.html', context)
+
+def save_config(request):
+	if request.method == 'POST':
+		config = ConwayConfig.objects.get()
+		config.title = request.POST['title']
+		config.board = request.POST['board']
+		config.conway = request.POST['conway']
+		config.owner = request.POST['owner']
+		config.save()
+	return HttpResponse('successfully created config')

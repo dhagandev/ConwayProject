@@ -48,7 +48,7 @@
 	display: block;
 }
 
-.set-len, .set-wid {
+.set-len, .set-wid, .sprite-choice {
 	display: inline-block;
 }
 
@@ -74,12 +74,17 @@
 }
 
 .cell {
-	margin: 2px;
 	background: #000000;
 }
 
 .alive {
-	background: #FFFFFF;
+	background-image: url('../img/sprite_conway_big.png');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.alive.connie {
+	background-image: url('../img/sprite_connie_big.png');
 }
 
 .adjacent {
@@ -139,7 +144,7 @@
 .apply-btn {
 	display: inline-block;
 	padding: 8px 40px;
-	margin-left: 150px; 
+	margin-left: 32px; 
 }
 
 .err-zone {
@@ -188,4 +193,19 @@
 
 .rules-descrip p {
 	margin: 9px 0;
+}
+
+.sprite-choice {
+	text-align: center;
+	margin: 16px 52px;
+}
+
+.need-to-login {
+	font-family: Open Sans;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 25px;
+	text-align: center;
+	margin: 24px;
+	color: #F49A9A;
 }

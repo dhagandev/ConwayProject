@@ -3,7 +3,9 @@ const BOARD_WID = 1265;
 let GRID = [];
 let DOM_GRID = [];
 let DIR_ARR = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
-	
+
+let CONNIE = false;
+
 function livingNeighborUpdate(cell) {
 	let r = cell.getAttribute("row");
 	let c = cell.getAttribute("col");
@@ -75,15 +77,15 @@ function cellClicked(cell) {
 	livingNeighborUpdate(cell);
 }
 
-function createCell(gridLen, gridWid) {
+function createCell(gridLen) {
 
 }
 
-function createGameZone(gridLen, gridWid) {
+function createGameZone(gridLen) {
 	let gameZone = document.createElement("div");
 	gameZone.classList.add("game-zone");
 
-	let board = createBoard(gridLen, gridWid);
+	let board = createBoard(gridLen);
 
 	let boardBar = createBoardBar();
 
@@ -93,36 +95,39 @@ function createGameZone(gridLen, gridWid) {
 	return gameZone;
 }
 
-function createCell(numRow, ele, gridLen, gridWid) {
+function createCell(numRow, ele, gridLen) {
 	let square = document.createElement("div");
 	square.classList.add("cell");
+
+	if (CONNIE) {
+		square.classList.add("connie");
+	}
+
 	square.setAttribute("row", numRow);
 	square.setAttribute("col", ele);
 	square.addEventListener('click', function() {
 		cellClicked(this);
 	});
 
-	squareHeight = Math.trunc(BOARD_LEN/gridLen);
-	squareHeight = Math.trunc(squareHeight/BOARD_LEN * 100);
-	square.style.height = squareHeight + "%";
+	squareHeight = BOARD_LEN/gridLen;
+	square.style.height = squareHeight + "px";
 
-	squareWidth = Math.trunc(BOARD_WID/gridWid);
-	squareWidth = Math.trunc(squareWidth/BOARD_WID * 100);
-	square.style.width = squareWidth + "%";
+	squareWidth = BOARD_WID/gridLen;
+	square.style.width = squareWidth + "px";
 
 	return square;
 }
 
-function createBoard(gridLen, gridWid) {
+function createBoard(gridLen) {
 	let board = document.createElement("div");
 	board.classList.add("board");
 
 	for (let numRow = 0; numRow < gridLen; numRow++) {
 		let newRow = [];
 		let domRow = []
-		for (let ele = 0; ele < gridWid; ele++) {
+		for (let ele = 0; ele < gridLen; ele++) {
 			newRow.push(false);
-			let square = createCell(numRow, ele, gridLen, gridWid);
+			let square = createCell(numRow, ele, gridLen);
 			domRow.push(square);
 			board.append(square);
 		}
@@ -246,21 +251,21 @@ function createInfoZone() {
 	return infoZone;
 }
 
-function createSimZone(gridLen, gridWid) {
+function createSimZone(gridLen) {
 	let simSetup = document.querySelector(".sim-setup");
 	let simZoneParent = simSetup.parentNode;
 
 	let simZone = document.createElement("div");
 	simZone.classList.add("sim-zone")
 
-	let gameZone = createGameZone(gridLen, gridWid);
+	let gameZone = createGameZone(gridLen);
 	let infoZone = createInfoZone();
 
 	simZone.appendChild(gameZone);
 	simZone.appendChild(infoZone);
 	simZoneParent.appendChild(simZone);
 
-	setupSave();
+	//setupSave();
 }
 
 function createInputError() {
@@ -282,27 +287,32 @@ function validInput(value) {
 function createConfig() {
 	GRID = [];
 	DOM_GRID = [];
+	CONNIE = false;
+
+	console.log(user.id)
+
 	let gridLen = document.querySelector("#grid-len").value;
-	let gridWid = document.querySelector("#grid-wid").value;
 	
 	gridLen = parseInt(gridLen);
 	let lenOk = validInput(gridLen);
-	gridWid = parseInt(gridWid);
-	let widOk = validInput(gridWid);
+
 
 	let simZone = document.querySelector(".sim-zone");
 	let errZone = document.querySelector(".err-zone");
-	if (lenOk && widOk) {
+	if (lenOk) {
+		let sprite = document.querySelector('input[name="sprite"]:checked').value;
+		CONNIE = sprite === "Connie";
+
 		if (errZone !== null) {
 			errZone.parentNode.removeChild(errZone)
 		}
 
 		if (simZone === null) {
-			createSimZone(gridLen, gridWid);
+			createSimZone(gridLen);
 		}
 		else {
 			simZone.parentNode.removeChild(simZone);
-			createSimZone(gridLen, gridWid);
+			createSimZone(gridLen);
 		}
 	}
 	else {
@@ -320,17 +330,40 @@ function createConfig() {
 
 function setupApply() {
 	let applyBtn = document.querySelector(".apply-btn");
-	applyBtn.addEventListener("click", createConfig);
+	if (applyBtn) {
+		applyBtn.addEventListener("click", createConfig);
+	}
 }
 
 function saveConfig() {
 	let titleInput = document.querySelector("#title-input").value;
 	console.log(titleInput);
+
+
 }
 
 function setupSave() {
-	let saveBtn = document.querySelector(".save-btn");
-	saveBtn.addEventListener("click", saveConfig);
+	// let saveBtn = document.querySelector(".save-btn");
+	// saveBtn.addEventListener("click", saveConfig);
+	let titleInput = document.querySelector("#title-input").value;
+
+	$(".save-btn").click(function() {
+		$.ajax({
+			url: '/sim/save/',
+			data: {
+				'title': titleInput,
+				'board': GRID,
+				'conway': !CONNIE,
+				'owner': user
+			},
+			type: 'POST',
+			success: function() {
+
+			}
+		}).done((response) => {
+			console.log(response);
+		})
+	})
 }
 
 setupApply();

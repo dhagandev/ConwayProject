@@ -16,6 +16,7 @@ class User(models.Model):
 class ConwayConfig(models.Model):
     title = models.CharField(max_length=200)
     board = ArrayField(ArrayField(models.BooleanField()))
+    conway = models.BooleanField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateField('created', default=timezone.now)
 
