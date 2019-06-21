@@ -65,12 +65,67 @@ a {
 	margin-top: 15px;
 }
 
-.hov-rules {
+#hov-rules {
 	display: table-cell;
 	vertical-align: middle;
 	padding-right: 20px;
-
 	font-family: Open Sans;
 	font-size: 14px;
 	color: #F8F5FD;
+}
+
+.tooltip {
+	position: relative;
+	color: white;
+	text-align: center;
+	line-height: 19px;
+	font-size: 14px;
+	margin: 0 auto;
+}
+
+.tooltip::before {
+	position: absolute;
+	z-index: 2;
+	display: none;
+	width: 250px;
+	height: 350px;
+	line-height: 19px;
+	font-size: 14px;
+	border-radius: 6px;
+	background-color: #FDCBF5;
+	color: black;
+	content: attr(title);
+
+	right: 30%;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+	display: inline-block;
+}
+
+.tooltip::after {
+	position: absolute;
+	z-index: 1; 
+	display: none;
+	width: 350;
+	height: 300;
+	border: 5px solid transparent;
+	content: "";
+	bottom: 100%;
+	border-top-color: #FDCBF5;
+	}
+
+.tooltip.bottom::before {
+	top: 98%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.tooltip.bottom::after {
+	top: 98%;
+	left: 20%;
+	border-bottom-color: #FDCBF5;
+	border-top-width: 0;
+	transform: translateY(-50%);
 }
