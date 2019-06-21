@@ -78,13 +78,14 @@
 	background-image: url('../img/whitesmoke2.png');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 90% 95%;
+	background-size: 120%;
 }
 
 .alive {
 	background-image: url('../img/sprite_conway_big.png');
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: auto;
 }
 
 .alive.connie {
@@ -96,6 +97,7 @@
 	background-image: url('../img/whitesmoke.png');
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: 90%;
 }
 
 .board {
