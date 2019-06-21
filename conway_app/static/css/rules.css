@@ -47,7 +47,23 @@ text-align:  left;
 font-family: Open Sans;
 font-style: normal;
 font-weight: normal;
+font-size: 14px;
 color: #000000;    
 margin-left: 180px;
 margin-right: 353px;
+}
+
+
+.about {
+display: flex;
+flex-direction: column;
+text-align: left;
+font-family: Open Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+color: #000000;    
+margin-left: 180px;
+margin-right: 180px;
+margin-bottom: 180px;
 }

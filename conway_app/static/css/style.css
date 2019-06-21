@@ -86,6 +86,7 @@ input[type=number] {
 }
 
 .tooltip {
+	
 	position: relative;
 	color: white;
 	text-align: center;
@@ -103,11 +104,9 @@ input[type=number] {
 	line-height: 19px;
 	font-size: 14px;
 	border-radius: 6px;
-	background-color: grey;
-	color: white;
+	background-color: lavender;
+	color: black;
 	content: attr(title);
-
-	right: 30%;
 }
 
 .tooltip:hover::before,
@@ -124,7 +123,7 @@ input[type=number] {
 	border: 5px solid transparent;
 	content: "";
 	bottom: 100%;
-	border-top-color:grey;
+	border-top-color:lavender;
 	}
 
 .tooltip.bottom::before {
@@ -136,7 +135,7 @@ input[type=number] {
 .tooltip.bottom::after {
 	top: 98%;
 	left: 20%;
-	border-bottom-color:grey;
+	border-bottom-color:lavender;
 	border-top-width: 0;
 	transform: translateY(-50%);
 }
