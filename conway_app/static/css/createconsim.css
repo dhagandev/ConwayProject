@@ -1,0 +1,160 @@
+.sim-setup {
+	width: 532px;
+	margin: 68px auto 0;
+}
+
+.setup-title {
+	font-family: Open Sans;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 33px;
+
+	color: #000000;
+
+	width: 150px;
+	margin: 0 auto 10px;
+}
+
+.setup-descrip {
+	font-family: Open Sans;
+	font-size: 18px;
+	line-height: 25px;
+
+	color: #000000;
+	margin-bottom: 54px;
+}
+
+.set-len input, .set-wid input {
+	background: #C4C4C4;
+	border: none;
+	border-radius: 1px;
+	height: 32px;
+	width: 102px;
+}
+
+.etc-zone input {
+	background: #C4C4C4;
+	border: none;
+	border-radius: 15px;
+	height: 50px;
+	width: 608px;
+}
+
+.set-len label, .set-wid label, .etc-zone label {
+	display: block;
+}
+
+.set-len, .set-wid {
+	display: inline-block;
+}
+
+.set-len {
+	margin-right: 18px;
+}
+
+.set-wid {
+	margin-left: 18px;
+}
+
+.setup-input {
+	font-family: Open Sans;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	color: #000000;
+}
+
+.sim-zone {
+	width: 1265px;
+	margin: 44px auto 0;
+}
+
+.board {
+	background: #C4C4C4;
+	height: 940px;
+	border-radius: 22px 22px 0 0;
+}
+
+.board-bar {
+	height: 88px;
+	background: #572795;
+	border-radius: 0 0 22px 22px;
+	display: flex;
+}
+
+.white-btn {
+	background: #F8F5FD;
+	color: #000000;
+
+	font-family: VT323;
+	font-size: 24px;
+	line-height: 24px;
+
+	margin-top: 20px;
+	padding: 12px 0;
+	width: 134px;
+
+	border-radius: 25px;
+	text-align: center;
+}
+
+.next-btn {
+	margin-left: 22px;
+}
+
+.start-btn {
+	margin-left: 14px;
+}
+
+.etc-zone {
+	font-family: Open Sans;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 25px;
+	color: #000000;
+	margin-bottom: 18px;
+}
+
+.apply-btn {
+	display: inline-block;
+	padding: 8px 40px;
+	margin-left: 150px; 
+}
+
+.info-zone {
+	display: flex;
+	margin-top: 64px;
+}
+
+.etc-zone {
+	margin-right: 100px;
+}
+
+.save-btn {
+	width: 160px;
+	margin-top: 48px;
+	padding: 18px 0;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 50px;
+}
+
+.rules-zone {
+	font-family: Open Sans;
+	font-size: 18px;
+	line-height: 25px;
+
+	color: #000000;
+
+	margin: 0 0 30px 100px;
+
+}
+
+.rules-label {
+	font-weight: 600;
+	margin-bottom: 27px;
+}
+
+.rules-descrip p {
+	margin: 9px 0;
+}
