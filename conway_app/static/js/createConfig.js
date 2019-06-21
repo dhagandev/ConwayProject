@@ -71,7 +71,7 @@ function cellClicked(cell) {
 			cell.classList.add("adjacent")
 		}
 	}
-	
+
 	livingNeighborUpdate(cell);
 }
 
@@ -259,6 +259,8 @@ function createSimZone(gridLen, gridWid) {
 	simZone.appendChild(gameZone);
 	simZone.appendChild(infoZone);
 	simZoneParent.appendChild(simZone);
+
+	setupSave();
 }
 
 function createInputError() {
@@ -319,6 +321,16 @@ function createConfig() {
 function setupApply() {
 	let applyBtn = document.querySelector(".apply-btn");
 	applyBtn.addEventListener("click", createConfig);
+}
+
+function saveConfig() {
+	let titleInput = document.querySelector("#title-input").value;
+	console.log(titleInput);
+}
+
+function setupSave() {
+	let saveBtn = document.querySelector(".save-btn");
+	saveBtn.addEventListener("click", saveConfig);
 }
 
 setupApply();
