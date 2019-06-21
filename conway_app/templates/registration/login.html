@@ -8,9 +8,13 @@ share your results</h3>
 </header>
 <form method="post" action="{% url 'login' %}">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" class="btn" value="login">
+	<form method="post" action="/accounts/login">
+	<input type="text" name="username" style="margin-top:20px;" autofocus required id="id_username" placeholder="username">
+	<input type="password" name="password" style="margin-top:20px;"  required id="id_password" placeholder="password">
+	<input type="submit" class="btn" style="margin-top:20px;" value="login">
 	<input type="hidden" name="next" value="{{ next }}">
 </form>
-<p>Not a member? <a href="{% url 'signup' %}">Sign up</a></p>
+
+<p>Not a member?<a href="{% url 'signup' %}" style="padding-left: 5px;">Sign up</a></p>
+
 {% endblock %}
