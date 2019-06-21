@@ -15,16 +15,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/rules.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/createconsim.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+
 </head>
 <body>
     <div class="top-header">
         <div class="game-header"><a href="{% url 'home' %}">Conway's Game of Survival</a></div>
         <div class="header-btn-area">
-            <div class="hov-rules">Rules</div>
+            <div class="tooltip bottom" 
+            title="Rules of the Game:
+            1. Each alive cell with one or no neighbors dies, as if by solitude.
+            2. Each alive cell with four or more neighbors dies, as if by overpopulation.
+            3. Each alive cell with two or three neighbors survives together.
+            4. Each empty cell with exactly three neighbors becomes alive." id="hov-rules">Rules</div>
             {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}"><div class="purple-btn auth-btn">Logout</div></a>
             {% else %}
