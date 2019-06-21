@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Sign Up</h1>
-
-{% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
-
+<header>
+<h3>Survive the Darkness:<br>
+Play Conway's Game and <br>
+share your results</h3>
+</header>
 <form method="post" action="{% url 'signup' %}">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" class="btn" value="signup">
+	<form method="post" action="/accounts/signup">
+	<input type="text" name="username" max_length="150" style="margin-top: 20px;" autofocus required id="id_username" placeholder="username">
+	<input type="password" name="password1" style="margin-top: 20px;" required id="id_password1" placeholder="password">
+	<input type="password" name="password2" style="margin-top: 20px;" required id="id_password2" placeholder="password confirmation">
+	<input type="submit" class="btn" style="margin-top:20px;" value="Create account">
+	<input type="hidden" name="next" value="{{ next }}">
 </form>
 {% endblock %}
